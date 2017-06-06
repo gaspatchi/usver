@@ -1,3 +1,4 @@
+import datetime
 import aiohttp
 from utils.config import config
 from utils.metrics import (advents_profile, advents_time, change_time,
@@ -17,7 +18,7 @@ async def registerUser(request):
 		elif response[0][0] == False:
 			return aiohttp.web.json_response({"message": response[1][0]}, status=409)
 	except Exception as error:
-		print({"type": "Error", "module": "Users", "section": "registerUser", "message": error.message, "date": datetime.datetime.now().isoformat("T")})
+		print({"type": "Error", "module": "Users", "section": "registerUser", "message": error.__str__(), "date": datetime.datetime.now().isoformat("T")})
 		return aiohttp.web.json_response({"message": "Невозможно выполнить регистрацию"}, status=500)
 
 @verification_time.time()
@@ -30,7 +31,7 @@ async def verifyToken(request):
 		elif response[0][0] == False:
 			return aiohttp.web.json_response({"message": response[1][0]}, status=404)
 	except Exception as error:
-		print({"type": "Error", "module": "Users", "section": "verifyToken", "message": error.message, "date": datetime.datetime.now().isoformat("T")})
+		print({"type": "Error", "module": "Users", "section": "verifyToken", "message": error.__str__(), "date": datetime.datetime.now().isoformat("T")})
 		return aiohttp.web.json_response({"message": "Невозможно выполнить верификацию"}, status=500)
 
 @login_time.time()
@@ -49,7 +50,7 @@ async def loginUser(request):
 		elif response[0][0] == False:
 			return aiohttp.web.json_response({"message": response[1][0]}, status=404)
 	except Exception as error:
-		print({"type": "Error", "module": "Users", "section": "loginUser", "message": error.message, "date": datetime.datetime.now().isoformat("T")})
+		print({"type": "Error", "module": "Users", "section": "loginUser", "message": error.__str__(), "date": datetime.datetime.now().isoformat("T")})
 		return aiohttp.web.json_response({"message": "Невозможно выполнить вход"}, status=500)
 
 @reset_time.time()
@@ -63,7 +64,7 @@ async def resetPassword(request):
 		elif response[0][0] == False:
 			return aiohttp.web.json_response({"message": response[1][0]}, status=404)		
 	except Exception as error:
-		print({"type": "Error", "module": "Users", "section": "resetPassword", "message": error.message, "date": datetime.datetime.now().isoformat("T")})
+		print({"type": "Error", "module": "Users", "section": "resetPassword", "message": error.__str__(), "date": datetime.datetime.now().isoformat("T")})
 		return aiohttp.web.json_response({"message": "Невозможно сбросить пароль"}, status=500)
 
 @advents_time.time()
@@ -76,7 +77,7 @@ async def selectProfile(request):
 		elif response[0][0] == False:
 			return aiohttp.web.json_response({"message": response[1][0]}, status=404)		
 	except Exception as error:
-		print({"type": "Error", "module": "Users", "section": "selectProfile", "message": error.message, "date": datetime.datetime.now().isoformat("T")})
+		print({"type": "Error", "module": "Users", "section": "selectProfile", "message": error.__str__(), "date": datetime.datetime.now().isoformat("T")})
 		return aiohttp.web.json_response({"message": "Невозможно получить профиль"}, status=500)
 
 @change_time.time()
@@ -91,5 +92,5 @@ async def updateProfile(request):
 		elif response[0][0] == False:
 			return aiohttp.web.json_response({"message": response[1][0]}, status=404)		
 	except Exception as error:
-		print({"type": "Error", "module": "Users", "section": "updateProfile", "message": error.message, "date": datetime.datetime.now().isoformat("T")})
+		print({"type": "Error", "module": "Users", "section": "updateProfile", "message": error.__str__(), "date": datetime.datetime.now().isoformat("T")})
 		return aiohttp.web.json_response({"message": "Невозможно получить профиль"}, status=500)

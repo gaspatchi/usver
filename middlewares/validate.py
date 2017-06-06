@@ -1,5 +1,6 @@
 import aiohttp
 import jsonschema
+import datetime
 
 user_register = {
 	"type" : "object",
@@ -43,7 +44,6 @@ user_update = {
 async def validateJson(app, handler):
 	async def middleware_handler(request):
 		try:
-			
 			if request.path == "/login" and request.method == "POST":
 				body = await request.json()
 				jsonschema.Draft4Validator(user_login).validate(body)
@@ -65,7 +65,7 @@ async def validateJson(app, handler):
 		except jsonschema.ValidationError as error:
 			return aiohttp.web.json_response({"message": error.message}, status=400)
 		except Exception as error:
-			print({"type": "Error", "module": "Validate", "section": "validateJson", "message": error.message, "date": datetime.datetime.now().isoformat("T")})
+			print({"type": "Error", "module": "Validate", "section": "validateJson", "message": error.__str__(), "date": datetime.datetime.now().isoformat("T")})
 			return aiohttp.web.json_response({"message": "Ошибка при валидации данных"},status=500)
 
 	return middleware_handler

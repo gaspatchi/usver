@@ -1,3 +1,4 @@
+import datetime
 import re
 import time
 import aiohttp
@@ -26,6 +27,7 @@ async def verifyAuth(app, handler):
 					return aiohttp.web.json_response({"message": "Неверный заголовок"}, status=403)
 			else:
 				return await handler(request)
-		except aiohttp.ClientError:
+		except aiohttp.ClientError as error:
+			print({"type": "Fatal", "module": "Auth", "section": "verifyAuth", "message": error.__str__(), "date": datetime.datetime.now().isoformat("T")})
 			return aiohttp.web.json_response({"message": "Невозможно проверить сессию"}, status=500)
 	return middleware_handler

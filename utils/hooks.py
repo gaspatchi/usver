@@ -5,7 +5,6 @@ import hvac
 import tarantool
 from utils.config import config
 
-
 def setTarantool(consulConnection, client):
 	tarantoolInfo = consulConnection.catalog.service("tarantool")
 	if len(tarantoolInfo[1]) != 0:
@@ -47,7 +46,7 @@ async def registerService(app):
 		setTarantool(consulConnection, client)
 		app["tarantool"] = tarantool.connect(host=config["tarantool"]["address"],port=config["tarantool"]["port"], user=config["tarantool"]["user"], password=config["tarantool"]["password"])
 	except Exception as error:
-		print({"type": "Fatal", "module": "Init", "section": "registerService", "message": error.message, "date": datetime.datetime.now().isoformat("T")})
+		print({"type": "Fatal", "module": "Init", "section": "registerService", "message": error.__str__(), "date": datetime.datetime.now().isoformat("T")})
 		consulConnection.agent.service.deregister("usver")
 		sys.exit("Невозможно получить информацию о сервисах")
 
