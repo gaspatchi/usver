@@ -1,0 +1,6 @@
+aiohttp
+jsonschema
+python-consul
+hvac
+prometheus_client
+tarantool>=0.4
