@@ -1,18 +1,15 @@
+import os
 config = {
 	"server": {
-		"address": "0.0.0.0",
+		"name": "usver",
+		"address": "127.0.0.1",
 		"port": 8080,	
 	},
 	"tarantool": {
 		"address": "",
 		"port": "",
-		"user": "",
-		"password":""
-	},
-	"vault": {
-		"address": "",
-		"port": "",
-		"token": "acbbfcb5-a4b7-1719-e4ee-b196ae7ac6e3"
+		"user": os.environ.get("tarantool_user"),
+		"password": os.environ.get("tarantool_password")
 	},
 	"tokenzer": {
 		"address": "",
