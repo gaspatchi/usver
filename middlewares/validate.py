@@ -6,8 +6,8 @@ user_register = {
 	"type" : "object",
 	"required": ["firstname", "lastname", "email", "password"],
 	"properties": {
-		"firstname": { "type": "string", "maxLength": 15},
-		"lastname": { "type": "string", "maxLength": 15},
+		"firstname": { "type": "string", "minLength": 2, "maxLength": 15},
+		"lastname": { "type": "string", "minLength": 2, "maxLength": 15},
 		"email": { "type": "string", "format": "email", "maxLength": 30},
 		"password": { "type": "string", "minLength": 4}
 	}
