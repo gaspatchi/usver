@@ -8,7 +8,7 @@ user_register = {
 	"properties": {
 		"firstname": { "type": "string", "minLength": 2, "maxLength": 15},
 		"lastname": { "type": "string", "minLength": 2, "maxLength": 15},
-		"email": { "type": "string", "format": "email", "maxLength": 30},
+		"email": { "type": "string", "format": "email", "minLength": 2, "maxLength": 50},
 		"password": { "type": "string", "minLength": 4}
 	}
 }
@@ -17,8 +17,8 @@ user_login = {
 	"type" : "object",
 	"required": ["email", "password"],
 	"properties": {
-		"email": { "type": "string", "format": "email", "maxLength": 30},
-		"password": { "type": "string" }
+		"email": { "type": "string", "format": "email", "minLength": 2, "maxLength": 50},
+		"password": { "type": "string", "minLength": 4 }
 	}
 }
 
@@ -26,18 +26,18 @@ user_reset = {
 	"type" : "object",
 	"required": ["email"],
 	"properties": {
-		"email": { "type": "string", "format": "email", "maxLength": 30}
+		"email": { "type": "string", "format": "email", "minLength": 2, "maxLength": 50}
 	}
 }
 
 user_update = {
 	"type" : "object",
 	"properties": {
-		"firstname": { "type": "string", "minLength": 2},
-		"lastname": { "type": "string", "minLength": 2},
+		"firstname": { "type": "string", "minLength": 2, "maxLength": 15},
+		"lastname": { "type": "string", "minLength": 2, "maxLength": 15},
 		"number": { "type": "string", "minLength": 11, "maxLength": 11},
 		"image": { "type": "string",  "minLength": 50},
-		"password": { "type": "string" }
+		"password": { "type": "string", "minLength": 4 }
 	}
 }
 

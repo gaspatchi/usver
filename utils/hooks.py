@@ -25,7 +25,7 @@ def setTokenzer(consulConnection):
 
 async def registerService(app):
 	try:
-		consulConnection = consul.Consul()
+		consulConnection = consul.Consul(host=config["consul"]["address"],port=config["consul"]["port"])
 		consulConnection.agent.service.register(config["server"]["name"],address=config["server"]["address"],port=config["server"]["port"])
 		setTokenzer(consulConnection)
 		setTarantool(consulConnection)
