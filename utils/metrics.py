@@ -12,10 +12,10 @@ advents_time = Gauge("usver_advents_time", "Время получения про
 logins_sum = Counter("usver_logins_users", "Количество вошедших пользователей",registry=registry)
 login_time = Gauge("usver_login_time", "Время входа пользователя",registry=registry)
 
-sum_users = Counter("usver_sum_users", "Количество созданых пользователей",registry=registry)
+sum_users = Counter("usver_sum_users", "Количество созданных пользователей",registry=registry)
 registration_time = Gauge("usver_user_registration_time", "Время создания пользователя",registry=registry)
 
-completed_verification = Counter("usver_sum_completed_verification", "Количество подтвержденных действий",registry=registry)
+completed_verification = Counter("usver_sum_completed_verification", "Количество подтверждённых действий",registry=registry)
 verification_time = Gauge("usver_verification_time", "Время подтверждения действия",registry=registry)
 
 password_resets = Counter("usver_sum_password_resets", "Количество сбросов пароля",registry=registry)
